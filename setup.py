@@ -4,7 +4,7 @@ long_description = open('./README.md')
 
 setup(
     name='dependencyheaven',
-    version='1.0.0',
+    version='1.0.1',
     url='https://github.com/ZSendokame/dependencyheaven',
     license='MIT license',
     author='ZSendokame',
