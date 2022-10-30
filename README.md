@@ -4,7 +4,7 @@
 
 # Installation
 ```python
-pip git+install https://github.com/ZSendokame/Deph.git
+pip install git+https://github.com/ZSendokame/depheaven.git
 ```
 
 # Use
