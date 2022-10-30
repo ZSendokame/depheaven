@@ -43,15 +43,20 @@ def main():
     visitor.visit_Import(parsed)
 
     for package in visitor.packages:
-        if classify_imports.classify_base(package) == 'THIRD_PARTY':
-            try:
-                version = get_distribution(package)
-                added += 1
+        package = package.split('.')
+        name = package[0]
+        classification = classify_imports.classify_base(name)
 
-                output_file.write(f'{package}=={version.version}\n')
+        if classification == 'THIRD_PARTY' and len(package) == 1:
+            try:
+                version = get_distribution(name)
+
+                output_file.write(f'{name}=={version.version}\n')
 
             except DistributionNotFound:
-                pass
+                output_file.write(f'{name}\n')
+
+            added += 1
 
     print(f'+ {len(visitor.packages)} packages, {added} added to {output}.')
 
